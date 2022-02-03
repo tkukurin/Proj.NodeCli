@@ -17,7 +17,7 @@ const RE_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\
  * Example: `\[ www.url1.com \]` => nothing because brackets are escaped.
  */
 export class UserQueryParser {
-  static parse(s: string): Array<string> {
+  static parse(s: string): string[] {
     return [...(new UserQueryParser().update(s))];
   }
 
@@ -58,3 +58,4 @@ export class UserQueryParser {
 }
 
 export default UserQueryParser.parse;
+
