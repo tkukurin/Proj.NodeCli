@@ -1,6 +1,5 @@
 import {expect} from 'chai';
-import {AxiosResponse, AxiosError} from 'axios';
-import {DefaultFormatter, extractFirstEmail, extractTitleTag} from '@/formatter';
+import {extractFirstEmail, extractTitleTag} from '@/formatter';
 
 describe('gets emails', () => {
   it('no email', () => {

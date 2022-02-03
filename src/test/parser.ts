@@ -67,7 +67,7 @@ describe('parser', () => {
     expect(parser(s)).to.have.all.members(['www.a.com']);
   });
 
-  it('url with special characters, uppercase and \[ escaped', () => {
+  it('url with special characters, uppercase and [ escaped', () => {
     const s1 = 'one url [bla www.fIrst.xyz/ab?xyz=123\\[escaped ]';
     expect(parser(s1)).to.have.all.members(['www.fIrst.xyz/ab?xyz=123[escaped']);
   });

@@ -22,12 +22,12 @@ export class UserQueryParser {
   }
 
   #state: Array<char> = [];
-  #depth: number = 0;
-  #stateEsc: boolean = false;
+  #depth = 0;
+  #stateEsc = false;
 
   *update(s: string): Generator<string> {
-    for (let c of s) {
-      let url = this.#accumChar(c);
+    for (const c of s) {
+      const url = this.#accumChar(c);
       if (url) yield url;
     }
   }
