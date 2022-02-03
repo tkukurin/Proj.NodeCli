@@ -31,8 +31,10 @@
   },
   "license": "CC BY-NC-ND 4.0",
   "dependencies": {
+    "axios": "^0.25.0",
     "commander": "^7.2.0",
-    "normalize-url": "<7"
+    "normalize-url": "<7",
+    "throttled-queue": "^2.1.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.18",
