@@ -6,6 +6,17 @@ Conclusions: apparently you need a PhD in Node to understand all the intricacies
 Just [look at all this ESM/CommonJS shit](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 
+## TL;DR test and/or run
+
+```bash
+$ npm test
+$ npm run build
+$ IM_SECRET=123 node build/cli/tk-gotcha.js [www.google.com]
+```
+
+The app will parse urls within brackets and send some requests.
+
+
 <details>
    <summary>Click to view deets from the template this project was generated from</summary>
 
