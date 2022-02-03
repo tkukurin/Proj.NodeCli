@@ -3,11 +3,12 @@
 Simple CLI Node app.
 Checking what is the current accepted build tooling.
 Conclusions: apparently you need a PhD in Node to understand all the intricacies of its ecosystem.
+Just [look at all this ESM/CommonJS shit](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 
 <details>
    <summary>Click to view deets from the template this project was generated from</summary>
-   
+
 Getting a Typescript project running
 is a pain, since there is a lot of environment and configuration setup
 before you can get started. If you want to be able to publish
@@ -23,7 +24,7 @@ Typescript project for Node packages.
 ## Setup Guide
 
 Have [**Node.js v13.2+**](https://nodejs.org/) (v14+ highly recommended) installed.
-   
+
 1. Run `npm install` to install all dependencies
 2. (Optional) Run `npm outdated` to see if any dependencies have major updates.
 3. (Optional) Run `npm update` to get those dependencies up to date with minor updates.
@@ -38,7 +39,7 @@ Have [**Node.js v13.2+**](https://nodejs.org/) (v14+ highly recommended) install
 5. Check the `.gitignore` and add any filetypes or folders you want to keep out of your repo.
 6. Open up the `./tsconfig.json` file to see if you want to change anything. Pay particular attention to the `paths` section!
 
-   
+
 ### Begin coding!
 
 - Your entrypoint is `./src/index.ts`, so start there!
