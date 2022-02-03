@@ -1,9 +1,9 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Node CLI tk-gotcha",
+  "description": "Useless CLI app.",
   "repository": "",
-  "homepage": "",
-  "author": "",
+  "homepage": "https://tkukurin.github.io/",
+  "author": "Toni Kukurin",
   "keywords": [],
   "private": true,
   "version": "0.0.1",
@@ -29,7 +29,7 @@
     "format": "prettier src/**/*.ts -w",
     "build-live": "tsc -w && tsc-alias -w"
   },
-  "license": "MIT",
+  "license": "CC BY-NC-ND 4.0",
   "dependencies": {
     "commander": "^7.2.0"
   },
