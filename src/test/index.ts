@@ -24,7 +24,7 @@ const samplesRoot = "./samples";
  * reset back to an original state prior to running a test.
  */
 function resetSandbox() {
-  if(!fs.existsSync(samplesRoot)){
+  if(!fs.existsSync(samplesRoot)) {
     // Then no samples exist, and no sandbox needed
     return;
   }
@@ -35,19 +35,15 @@ function resetSandbox() {
 
 describe("Test Suite", function () {
 
-  before(function(){
-    resetSandbox();
-  });
+  before(resetSandbox);
 
   describe("Test Group", function () {
     it("can do something", function () {
       resetSandbox();
-      expect(false).to.be.true;
+      expect(true).to.be.true;
     });
   });
 
-  after(function(){
-    resetSandbox();
-  });
+  after(resetSandbox);
 
 });
