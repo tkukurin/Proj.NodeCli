@@ -4,11 +4,11 @@ import normalizeUrl from 'normalize-url';
 type FilterFn = (a: any) => boolean;
 
 /** Filter function to discard duplicates from sequential calls. */
-export class UniqFilter {
-  #seen: Set<any> = new Set();
-  seen(x: any): boolean {
-    const isSeen = this.#seen.has(x);
-    this.#seen.add(x);
+export function uniq(): FilterFn {
+  const seen = new Set();
+  return (x: any) => {
+    const isSeen = seen.has(x);
+    seen.add(x);
     return !isSeen;
   }
 }
