@@ -1,13 +1,12 @@
-import {expect} from "chai";
-import {UserQueryParser} from '@/parser';
+import { expect } from 'chai';
+import { UserQueryParser } from '@/parser';
 import parser from '@/parser';
-
 
 describe('online streaming parser', () => {
   it('keeps state between invocations for online updates', () => {
     const parser = new UserQueryParser();
     const chunks = ['[ partial ', 'www.a.com', ']', '[www.b', '.com', ']'];
-    const urls = chunks.flatMap(c => [...parser.update(c)]);
+    const urls = chunks.flatMap((c) => [...parser.update(c)]);
     expect(urls).to.have.all.members(['www.a.com', 'www.b.com']);
   });
 });
@@ -39,7 +38,7 @@ describe('parser', () => {
   });
 
   it('nested brackets, last deeply nested with url', () => {
-    const s = '[ www.a.com  [www.b.com] [[www.c.com]]]'
+    const s = '[ www.a.com  [www.b.com] [[www.c.com]]]';
     expect(parser(s)).to.have.all.members(['www.c.com']);
   });
 
@@ -69,7 +68,9 @@ describe('parser', () => {
 
   it('url with special characters, uppercase and [ escaped', () => {
     const s1 = 'one url [bla www.fIrst.xyz/ab?xyz=123\\[escaped ]';
-    expect(parser(s1)).to.have.all.members(['www.fIrst.xyz/ab?xyz=123[escaped']);
+    expect(parser(s1)).to.have.all.members([
+      'www.fIrst.xyz/ab?xyz=123[escaped',
+    ]);
   });
 
   it('examples ignore inner brackets', () => {
@@ -77,6 +78,5 @@ describe('parser', () => {
     expect(parser(s1)).to.have.all.members(['www.second.com']);
     const s2 = '>1 lvls[ www.first.com [www.third.com]]';
     expect(parser(s2)).to.have.all.members(['www.third.com']);
-  })
+  });
 });
-

@@ -2,7 +2,8 @@
 
 type char = string;
 
-const RE_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+const RE_URL =
+  /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
 /**
  * State-machine based parser for user queries.
@@ -18,7 +19,7 @@ const RE_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\
  */
 export class UserQueryParser {
   static parse(s: string): string[] {
-    return [...(new UserQueryParser().update(s))];
+    return [...new UserQueryParser().update(s)];
   }
 
   #state: Array<char> = [];
@@ -37,10 +38,11 @@ export class UserQueryParser {
     const depthMinus = +(!this.#stateEsc && c === ']');
 
     this.#depth += depthPlus;
-    if (this.#depth === 0) return undefined;  // early bail if not in brackets
+    if (this.#depth === 0) return undefined; // early bail if not in brackets
 
-    if (this.#stateEsc || !'[]\\'.includes(c)) {  // skip special chars
-      this.#state.push(c);  // accumulate all other chars
+    // skip special chars, accumulate all others
+    if (this.#stateEsc || !'[]\\'.includes(c)) {
+      this.#state.push(c);
     }
 
     let url = undefined;
@@ -48,7 +50,11 @@ export class UserQueryParser {
       this.#stateEsc = !this.#stateEsc;
     } else if (c === ']' && this.#depth === 1) {
       // last url match from whitespace-tokenized lookback between `[` and `]`
-      url = this.#state.join('').split(/\s+/).reverse().find(s => RE_URL.test(s));
+      url = this.#state
+        .join('')
+        .split(/\s+/)
+        .reverse()
+        .find((s) => RE_URL.test(s));
       this.#state = [];
     }
 
@@ -58,4 +64,3 @@ export class UserQueryParser {
 }
 
 export default UserQueryParser.parse;
-

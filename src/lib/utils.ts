@@ -1,4 +1,4 @@
-import {createHmac} from 'crypto';
+import { createHmac } from 'crypto';
 import normalizeUrl from 'normalize-url';
 
 type FilterFn = (a: any) => boolean;
@@ -10,7 +10,7 @@ export function uniq(): FilterFn {
     const isSeen = seen.has(x);
     seen.add(x);
     return !isSeen;
-  }
+  };
 }
 
 export function hash(s: string, salt: string): string {
@@ -18,4 +18,3 @@ export function hash(s: string, salt: string): string {
 }
 
 export const urlNorm = (url: string): string => normalizeUrl(url);
-

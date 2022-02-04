@@ -1,5 +1,5 @@
-import {expect} from 'chai';
-import {extractFirstEmail, extractTitleTag} from '@/formatter';
+import { expect } from 'chai';
+import { extractFirstEmail, extractTitleTag } from '@/formatter';
 
 describe('gets emails', () => {
   it('no email', () => {
@@ -43,4 +43,3 @@ describe('gets title tag', () => {
     expect(extractTitleTag(s)).to.be.undefined;
   });
 });
-
