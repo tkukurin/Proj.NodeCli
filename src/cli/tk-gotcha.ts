@@ -6,7 +6,7 @@ import { DefaultFormatter } from '@/formatter';
 import getter from '@/getter';
 
 const KEY_SHA_SALT = 'IM_SECRET';
-const SEC_TIMEOUT = 5;
+const SEC_BACKOFF = 60;
 const SEC_BETWEEN_REQUESTS = 1;
 
 const shaSecret = process.env[KEY_SHA_SALT];
@@ -22,7 +22,7 @@ cli
     parser(userinput.join(''))
       .map(urlNorm)
       .filter(uniq())
-      .map(getter(SEC_TIMEOUT, SEC_BETWEEN_REQUESTS))
+      .map(getter(SEC_BACKOFF, SEC_BETWEEN_REQUESTS))
       .map((promise) =>
         promise.then((x) => fmt.fmtOut(x)).catch((x) => fmt.fmtErr(x)),
       )
