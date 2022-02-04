@@ -41,6 +41,7 @@
     "@types/fs-extra": "^9.0.11",
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.6.0",
+    "@types/sinon": "^10.0.10",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "chai": "^4.3.4",
@@ -51,6 +52,7 @@
     "mocha": "^9.2.0",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
+    "sinon": "^13.0.1",
     "source-map-support": "^0.5.19",
     "tsc-alias": "^1.2.11",
     "typescript": "next"
