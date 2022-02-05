@@ -1,7 +1,7 @@
 {
-  "name": "Node CLI tk-gotcha",
+  "name": "tk-gotcha-cli",
   "description": "Useless CLI app.",
-  "repository": "",
+  "repository": "https://github.com/tkukurin/Proj.NodeCli",
   "homepage": "https://tkukurin.github.io/",
   "author": "Toni Kukurin",
   "keywords": [],
