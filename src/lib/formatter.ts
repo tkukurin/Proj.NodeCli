@@ -17,7 +17,7 @@ export const outFmt = (r: AxiosResponse, secret: string) => {
     url: r.config.url,
     title: extractTitleTag(r.data),
     email: email ? hash(email, secret) : undefined,
-  }
+  };
 };
 
 export const errFmt = (err: AxiosError) => ({
@@ -25,4 +25,3 @@ export const errFmt = (err: AxiosError) => ({
   msg: err.message,
   url: err.config.url,
 });
-
