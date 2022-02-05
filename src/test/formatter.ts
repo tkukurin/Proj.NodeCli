@@ -1,7 +1,12 @@
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 import { AxiosResponse } from 'axios';
-import { outFmt, errFmt, extractFirstEmail, extractTitleTag } from '@/formatter';
+import {
+  outFmt,
+  errFmt,
+  extractFirstEmail,
+  extractTitleTag,
+} from '@/formatter';
 import * as utils from '@/utils';
 
 describe('full default formatter', () => {
@@ -9,10 +14,13 @@ describe('full default formatter', () => {
     .stub(utils, 'hash')
     .withArgs('me@gmail.com', 'salt')
     .returns('fakeHash');
-  const out = outFmt({
-    config: { url: 'abc.com' },
-    data: '<title>x</title> a bunch of text \n <a href="">me@gmail.com</a>',
-  } as AxiosResponse, 'salt');
+  const out = outFmt(
+    {
+      config: { url: 'abc.com' },
+      data: '<title>x</title> a bunch of text \n <a href="">me@gmail.com</a>',
+    } as AxiosResponse,
+    'salt',
+  );
   expect(out.title).equal('x');
   expect(out.url).equal('abc.com');
   expect(out.email).equal('fakeHash');
