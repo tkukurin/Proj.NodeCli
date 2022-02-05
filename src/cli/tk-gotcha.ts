@@ -22,7 +22,10 @@ cli
       .map(urlNorm)
       .filter(uniq())
       .map(getter(SEC_BACKOFF, SEC_BETWEEN_REQUESTS))
-      .map((promise) => promise.then(s => outFmt(s, shaSecret)).catch(errFmt))
-      .forEach((promise) => promise.then(console.log).catch(console.error));
+      .map((promise) =>
+           promise
+           .then(s => outFmt(s, shaSecret))
+           .catch(errFmt)
+      ).forEach((promise) => promise.then(console.log).catch(console.error));
   })
   .parse();
