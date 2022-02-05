@@ -11,23 +11,18 @@ const rfc5322Re =
 /** RFC5322 mail regex. Undefined if no email is present */
 export const extractFirstEmail = (s: string) => rfc5322Re.exec(s)?.[0];
 
-export class DefaultFormatter {
-  constructor(private hashSalt: string) {}
-
-  fmtOut(response: AxiosResponse) {
-    const email = extractFirstEmail(response.data);
-    return {
-      url: response.config.url,
-      title: extractTitleTag(response.data),
-      email: email ? hash(email, this.hashSalt) : undefined,
-    };
+export const outFmt = (r: AxiosResponse, secret: string) => {
+  const email = extractFirstEmail(r.data);
+  return {
+    url: r.config.url,
+    title: extractTitleTag(r.data),
+    email: email ? hash(email, secret) : undefined,
   }
+};
 
-  fmtErr(err: AxiosError) {
-    return {
-      name: err.name,
-      msg: err.message,
-      url: err.config.url,
-    };
-  }
-}
+export const errFmt = (err: AxiosError) => ({
+  name: err.name,
+  msg: err.message,
+  url: err.config.url,
+});
+

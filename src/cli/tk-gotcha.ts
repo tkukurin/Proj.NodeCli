@@ -2,7 +2,7 @@
 import cli from 'commander';
 import parser from '@/parser';
 import { uniq, urlNorm } from '@/utils';
-import { DefaultFormatter } from '@/formatter';
+import { outFmt, errFmt } from '@/formatter';
 import getter from '@/getter';
 
 const KEY_SHA_SALT = 'IM_SECRET';
@@ -17,15 +17,12 @@ if (!shaSecret) {
 cli
   .description('tk-gotcha: toy app')
   .arguments('<user-input...>')
-  .action((userinput: Array<string>) => {
-    const fmt = new DefaultFormatter(shaSecret);
+  .action((userinput: string[]) => {
     parser(userinput.join(''))
       .map(urlNorm)
       .filter(uniq())
       .map(getter(SEC_BACKOFF, SEC_BETWEEN_REQUESTS))
-      .map((promise) =>
-        promise.then((x) => fmt.fmtOut(x)).catch((x) => fmt.fmtErr(x)),
-      )
+      .map((promise) => promise.then(s => outFmt(s, shaSecret)).catch(errFmt))
       .forEach((promise) => promise.then(console.log).catch(console.error));
   })
   .parse();
