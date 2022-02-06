@@ -26,5 +26,4 @@ cli
       .forEach((promise) => promise.then(console.log).catch(console.error));
   })
   .parseAsync()
-  .catch(e => console.error('ERROR: ', e));
-
+  .catch((e) => console.error('ERROR: ', e));
